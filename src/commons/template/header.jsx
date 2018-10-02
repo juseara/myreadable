@@ -1,6 +1,6 @@
 import React from 'react'
 import DropDown from './dropdown'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default props => (
     <header className="main-header">
@@ -14,11 +14,20 @@ export default props => (
                 </div>
                 <div className="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul className="nav navbar-nav">
-                        <DropDown />    
+                        <DropDown />
                     </ul>
-
                 </div>
 
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success">4</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>

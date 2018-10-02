@@ -9,7 +9,9 @@ export default props => (
     <div className='wrapper'>
         <Header />
         <div className='content-wrapper'>
+        <div className="container">
             <Routes />
+        </div>
         </div>
     </div>
 )

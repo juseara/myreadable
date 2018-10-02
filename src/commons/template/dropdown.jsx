@@ -19,13 +19,9 @@ class DropDown extends Component {
                             className="dropdown-toggle"
                             data-toggle="dropdown">Categorias<span className="caret"></span></a>
                         <ul className="dropdown-menu" role="menu">
-                            <li><Link to="/post">Post</Link></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li className="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li className="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li><Link to="/post">React</Link></li>
+                            <li><Link to="/post">Redux</Link></li>
+                            <li><Link to="/post">Udacity</Link></li>
                         </ul>
                     </li>
         )
