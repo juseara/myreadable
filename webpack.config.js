@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path')
 
 console.log("DIRNAME", __dirname)
@@ -7,16 +8,18 @@ console.log("DIRNAME", __dirname)
      entry:'./src/index.jsx',
      output:{
          path: __dirname + '/public',
-         filename: './app.js'
+         filename: './app.js',
+         
      },
      devServer:{
          port:8000,
          contentBase: './public',
+         historyApiFallback: true
      },
      resolve:{
          extensions: ['.js', '.jsx'],
          alias:{
-            modules: path.resolve(__dirname, "node_modules"),
+            modules: __dirname + '/node_modules',
             jquery: 'modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js',
             bootstrap: 'modules/admin-lte/bootstrap/js/bootstrap.js'
          }
@@ -26,9 +29,9 @@ console.log("DIRNAME", __dirname)
              filename:'app.css'
          }),
         new webpack.ProvidePlugin({
-          $: 'jquery',
-          jQuery:'jquery',
-          'window.jquery':'jquery'
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
         })     
       ],
       module:{
