@@ -5,12 +5,21 @@ Moment.globalFormat = 'D MMM YYYY';
 
 import If from '../operator/if'
 import CommentList from '../list/commentList'
+import { votePostUp } from './boxPostAction'
+
 import imagemDefault from '../img/default_user.png'
 class BoxPost extends Component {
     
-   
+   onUpVote(e,post){
+    e.preventDefault()
+    debugger
+    const { id } = post
+    votePostUp(id)
+    console.log("ID POST VOTING",id)
+   }
+
     render() {
-        const { post } = this.props
+        const { post, votePostUp } = this.props
         debugger
         console.log("POTS == ", post)
         return (
@@ -35,7 +44,7 @@ class BoxPost extends Component {
 
                 <div className="box-body">
                     <p>{post.body}</p>
-                    <button type="button" className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-up"></i> Like</button>
+                    <button type="button" onClick={()=>votePostUp(post)} className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-up"></i> Like</button>
                     <button type="button" className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-down"></i> Dislike</button>
                     <span className="pull-right text-muted">{`${post.voteScore} likes - ${post.commentCount} comments`}</span>
                 </div>

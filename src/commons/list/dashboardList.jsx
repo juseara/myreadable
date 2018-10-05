@@ -13,7 +13,7 @@ class DashBoardList extends Component {
         return (
             <Grid>
                 {posts.map(post =>{
-                    return <BoxPost key={post.id} post={post}/>
+                    return <BoxPost key={post.id} post={post} votePostUp={this.props.votePostUp}/>
             })}
             </Grid>
             

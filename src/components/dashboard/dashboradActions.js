@@ -1,5 +1,5 @@
-import { FETCH_POSTS } from '../../utils/types'
-import { getPosts, getComments } from '../../utils/api'
+import { FETCH_POSTS,VOTE_UP_POST } from '../../utils/types'
+import { getPosts, getComments,votePost } from '../../utils/api'
 
 
 
@@ -25,4 +25,13 @@ export function  fetchPosts(){
         })
     }
     
+}
+
+export function votePostUp(post){
+    debugger
+    votePost(post.id,'upVote')
+    return {
+        type: VOTE_UP_POST,
+        payload:post.id
+    }
 }
