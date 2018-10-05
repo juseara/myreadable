@@ -1,41 +1,18 @@
 import React, { Component } from 'react'
+
 import Moment from 'react-moment';
 Moment.globalFormat = 'D MMM YYYY';
 
+import If from '../operator/if'
 import CommentList from '../list/commentList'
 import imagemDefault from '../img/default_user.png'
 class BoxPost extends Component {
-
-    getCommentByPostId()
-    {
-        return [
-            {
-                "id": "894tuq4ut84ut8v4t8wun89g",
-                "parentId": "8xf0y6ziyjabvozdd253nd",
-                "timestamp": 1468166872634,
-                "body": "Hi there! I am a COMMENT.",
-                "author": "thingtwo",
-                "voteScore": 6,
-                "deleted": false,
-                "parentDeleted": false
-            },
-            {
-                "id": "8tu4bsun805n8un48ve89",
-                "parentId": "8xf0y6ziyjabvozdd253nd",
-                "timestamp": 1469479767190,
-                "body": "Comments. Are. Cool.",
-                "author": "thingone",
-                "voteScore": -5,
-                "deleted": false,
-                "parentDeleted": false
-            }
-        ]
-    }
+    
+   
     render() {
         const { post } = this.props
-        const comment = this.getCommentByPostId()
+        debugger
         console.log("POTS == ", post)
-        console.log("Comment == ", comment)
         return (
             
             <div className="box box-widget collapsed-box">
@@ -57,16 +34,16 @@ class BoxPost extends Component {
                 </div>
 
                 <div className="box-body">
-                    <img className="img-responsive pad" src="https://firebasestorage.googleapis.com/v0/b/chat-teste-9fbfd.appspot.com/o/QueEIsso.jpeg?alt=media&token=5c8c3702-1f8b-4fb3-bdca-ebdbd113f75b" alt="Attachment Image"/>
                     <p>{post.body}</p>
                     <button type="button" className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-up"></i> Like</button>
                     <button type="button" className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-down"></i> Dislike</button>
                     <span className="pull-right text-muted">{`${post.voteScore} likes - ${post.commentCount} comments`}</span>
                 </div>
-
-                <div className="box-footer box-comments">                    
-                    <CommentList comments={comment} />
-                </div>
+                <If test={post.comments.length>0}>
+                    <div className="box-footer box-comments">                    
+                        <CommentList comments={post.comments} />
+                    </div>
+                </If>
 
                 <div className="box-footer">
                     <form>

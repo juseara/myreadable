@@ -7,7 +7,7 @@ class CommentList extends Component {
 
     render(){
         console.log("PROPS DASHBOARDLIST == ", this.props)
-        const { comments } = this.props
+        const  comments  = this.props.comments || []
         return (
             <div>
                 {comments.map(comment =><BoxComment key={comment.id} comment={comment}/>)}
