@@ -14,17 +14,16 @@ export default props => (
                 </div>
                 <div className="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul className="nav navbar-nav">
-                        <DropDown />
+                        <DropDown categories={props.categories}/>
                     </ul>
                 </div>
 
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="label label-success">4</span>
-                            </a>
+                <div className="navbar-custom-menu">
+                    <ul className="nav navbar-nav">
+                        <li className="messages-menu">
+                            <Link to="/post" >
+                                <i className="fa fa-envelope-o"></i>
+                            </Link>
                         </li>
                     </ul>
                 </div>

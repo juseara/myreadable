@@ -1,9 +1,11 @@
 import 'modules/admin-lte/plugins/jQuery/jquery-2.2.3.min'
-import 'modules/admin-lte/plugins/fastclick/fastclick'
-import 'modules/admin-lte/plugins/slimScroll/jquery.slimScroll.min'
-import 'modules/admin-lte/dist/js/app.min'
 import 'modules/admin-lte/bootstrap/js/bootstrap.min'
+import 'modules/admin-lte/plugins/slimScroll/jquery.slimScroll.min'
+import 'modules/admin-lte/plugins/fastclick/fastclick'
+import 'modules/admin-lte/dist/js/app.min'
 import 'modules/admin-lte/dist/js/demo.js'
+import 'modules/admin-lte/plugins/iCheck/icheck.min.js'
+
 
 
 import 'modules/font-awesome/css/font-awesome.min.css'

@@ -57,6 +57,7 @@ class BoxPost extends Component {
                 </div>
 
                 <div className="box-body">
+                    <img className="img-responsive pad" src="https://firebasestorage.googleapis.com/v0/b/chat-teste-9fbfd.appspot.com/o/QueEIsso.jpeg?alt=media&token=5c8c3702-1f8b-4fb3-bdca-ebdbd113f75b" alt="Attachment Image"/>
                     <p>{post.body}</p>
                     <button type="button" className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-up"></i> Like</button>
                     <button type="button" className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-down"></i> Dislike</button>

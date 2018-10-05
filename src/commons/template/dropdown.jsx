@@ -13,15 +13,14 @@ class DropDown extends Component {
     }
 
     render() {
+        const { categories }  = this.props
         return (
                     <li className={`dropdown`}>
                         <a href="#"
                             className="dropdown-toggle"
                             data-toggle="dropdown">Categorias<span className="caret"></span></a>
                         <ul className="dropdown-menu" role="menu">
-                            <li><Link to="/post">React</Link></li>
-                            <li><Link to="/post">Redux</Link></li>
-                            <li><Link to="/post">Udacity</Link></li>
+                            {categories.map(category => <li key={category.name}><Link  to={`/?category=${category.path}`}>{category.name}</Link></li>)}
                         </ul>
                     </li>
         )
