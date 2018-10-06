@@ -2,5 +2,8 @@
 
 export const FETCH_POSTS = 'FETCH_POSTS'
 export const VOTE_UP_POST = 'VOTE_UP_POST'
+export const VOTE_DOWN_POST = 'VOTE_DOWN_POST'
+export const VOTE_UP_COMMENT = 'VOTE_UP_COMMENT'
+export const VOTE_DOWN_COMMENT = 'VOTE_DOWN_COMMENT'
 
 

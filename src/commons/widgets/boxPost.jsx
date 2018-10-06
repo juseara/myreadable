@@ -4,23 +4,14 @@ import Moment from 'react-moment';
 Moment.globalFormat = 'D MMM YYYY';
 
 import If from '../operator/if'
-import CommentList from '../list/commentList'
-import { votePostUp } from './boxPostAction'
+import CommentList from '../../components/post/commentList'
 
 import imagemDefault from '../img/default_user.png'
 class BoxPost extends Component {
-    
-   onUpVote(e,post){
-    e.preventDefault()
-    debugger
-    const { id } = post
-    votePostUp(id)
-    console.log("ID POST VOTING",id)
-   }
-
+  
     render() {
-        const { post, votePostUp } = this.props
-        debugger
+        const { post, votePostUp, votePostDown } = this.props
+        
         console.log("POTS == ", post)
         return (
             
@@ -29,15 +20,20 @@ class BoxPost extends Component {
                     <div className="user-block">
                         <img className="img-circle" src={imagemDefault} alt="User Image" />
                         <span className="username"><a href="#">{post.author} - {post.title}</a></span>
-                        <span className="description">Shared publicly - <Moment>{post.timestamp}</Moment></span>
+                        <span className="description"></span>
+                        <ul className="list-inline">
+                        <li><i className="fa fa-share margin-r-5"></i> Shared publicly - <Moment>{post.timestamp}</Moment></li>
+                        <li className="pull-right">
+                        <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-comments-o margin-r-5"></i> {`Comments (${post.commentCount})`}
+                        </button>
+                        </li>
+                    </ul>
                     </div>
 
                     <div className="box-tools">
-                        <button type="button" className="btn btn-box-tool" data-toggle="tooltip" title="Edit this post">
+                        <button type="button" className="btn btn-box-tool" data-toggle="tooltip" title="edit">
                             <i className="fa fa-wrench"></i></button>
-                        <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-plus"></i>
-                        </button>
-                        <button type="button" className="btn btn-box-tool" data-widget="remove"><i className="fa  fa-trash"></i></button>
+                        <button type="button" className="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="delete"><i className="fa  fa-trash"></i></button>
                     </div>
 
                 </div>
@@ -45,21 +41,26 @@ class BoxPost extends Component {
                 <div className="box-body">
                     <p>{post.body}</p>
                     <button type="button" onClick={()=>votePostUp(post)} className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-up"></i> Like</button>
-                    <button type="button" className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-down"></i> Dislike</button>
-                    <span className="pull-right text-muted">{`${post.voteScore} likes - ${post.commentCount} comments`}</span>
+                    <button type="button" onClick={()=>votePostDown(post)} className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-down"></i> Dislike</button>
+                    <span className="pull-right text-muted">{`${post.voteScore >= 0? `${post.voteScore} likes`:`${post.voteScore*-1} dislikes`}`}</span>
                 </div>
                 <If test={post.comments.length>0}>
                     <div className="box-footer box-comments">                    
-                        <CommentList comments={post.comments} />
+                        <CommentList    comments={post.comments} 
+                                        voteCommentUp={this.props.voteCommentUp}
+                                        voteCommentDown={this.props.voteCommentDown}/>
                     </div>
                 </If>
 
                 <div className="box-footer">
                     <form>
                         <img className="img-responsive img-circle img-sm" src={imagemDefault} alt="Alt Text" />
-
+                        
                         <div className="img-push">
-                            <input type="text" className="form-control input-sm" placeholder="Press enter to post comment" />
+                            <input type="text" className="form-control input-sm input-comment input-author-comment" placeholder="Author name" />
+                        </div>
+                        <div className="img-push">
+                            <input type="text" className="form-control input-sm input-comment" placeholder="Press enter to post comment" />
                         </div>
                     </form>
                 </div>

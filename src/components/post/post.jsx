@@ -39,7 +39,6 @@ class Post extends Component {
 
                         <div className="box-footer">
                             <div className="pull-right">
-                                <button type="button" className="btn btn-default"><i className="fa fa-pencil"></i> Draft</button>
                                 <button type="submit" className="btn btn-primary"><i className="fa fa-envelope-o"></i> Publish</button>
                             </div>
                         </div>

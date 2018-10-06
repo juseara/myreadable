@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { fetchPosts,votePostUp } from './dashboradActions'
+import { fetchPosts, votePostUp, votePostDown, voteCommentUp, voteCommentDown } from './dashboradActions'
 import Content from '../../commons/template/content'
-import DashBoardList from '../../commons/list/dashboardList'
+import PostsList from '../post/postsList'
 import ContentHeader from '../../commons/template/contentHeader'
 
 class DashBoard extends Component {
@@ -12,14 +12,19 @@ class DashBoard extends Component {
     componentWillMount(){
         this.props.fetchPosts()
     }
+
     render() {
         const { posts } = this.props
-        debugger
+        
         return (
             <div>
                 <ContentHeader title='Home' small='Recent Posts' />
                 <Content>
-                    <DashBoardList posts={posts} votePostUp={this.props.votePostUp}/>
+                    <PostsList  posts={posts} 
+                                    votePostUp={this.props.votePostUp} 
+                                    votePostDown={this.props.votePostDown} 
+                                    voteCommentUp={this.props.voteCommentUp}
+                                    voteCommentDown={this.props.voteCommentDown}/>
                 </Content>
             </div>
         )
@@ -27,5 +32,5 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = state => ({posts: state.dashboard.posts})
-const mapDispatchToProps = dispath => bindActionCreators({fetchPosts,votePostUp},dispath)
+const mapDispatchToProps = dispath => bindActionCreators({fetchPosts, votePostUp, votePostDown, voteCommentUp,voteCommentDown},dispath)
 export default connect(mapStateToProps,mapDispatchToProps)(DashBoard)

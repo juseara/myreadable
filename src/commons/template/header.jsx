@@ -22,7 +22,7 @@ export default props => (
                     <ul className="nav navbar-nav">
                         <li className="messages-menu">
                             <Link to="/post" >
-                                <i className="fa fa-envelope-o"></i>
+                               <i className="fa fa-envelope-o"></i> New Post 
                             </Link>
                         </li>
                     </ul>

@@ -1,8 +1,5 @@
-import { FETCH_POSTS,VOTE_UP_POST } from '../../utils/types'
-import { getPosts, getComments,votePost } from '../../utils/api'
-
-
-
+import { FETCH_POSTS, VOTE_UP_POST, VOTE_DOWN_POST, VOTE_UP_COMMENT, VOTE_DOWN_COMMENT } from '../../utils/types'
+import { getPosts, getComments, votePost, voteComment } from '../../utils/api'
 
 export function  fetchPosts(){
     return dispatch => {
@@ -28,10 +25,33 @@ export function  fetchPosts(){
 }
 
 export function votePostUp(post){
-    debugger
     votePost(post.id,'upVote')
     return {
         type: VOTE_UP_POST,
         payload:post.id
+    }
+}
+
+export function votePostDown(post){    
+    votePost(post.id,'downVote')
+    return{
+        type: VOTE_DOWN_POST,
+        payload:post.id
+    }
+}
+
+export function voteCommentUp(comment){
+    voteComment(comment.id,'upVote')
+    return {
+        type: VOTE_UP_COMMENT,
+        payload:comment
+    }
+}
+
+export function voteCommentDown(comment){
+    voteComment(comment.id,'downVote')
+    return {
+        type: VOTE_DOWN_COMMENT,
+        payload:comment
     }
 }
