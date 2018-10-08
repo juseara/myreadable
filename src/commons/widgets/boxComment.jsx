@@ -7,7 +7,17 @@ Moment.globalFormat = 'D MMM YYYY';
 import imagemDefault from '../img/default_user.png'
 
 class BoxComment extends Component {
+    constructor(props){
+        super(props)
+        this.handleDeleteComment = this.handleDeleteComment.bind(this)
+    }
 
+    handleDeleteComment(e){
+        e.preventDefault()
+        const {id, parentId } = this.props.comment
+        this.props.deleteComment(id, parentId)
+    }
+    
     render() {
         const { comment, voteCommentUp, voteCommentDown } = this.props
         return (
@@ -17,7 +27,7 @@ class BoxComment extends Component {
                     <span className="username">{comment.author}
                         <span className="text-muted pull-right">
                             <button type="button" className="btn btn-box-tool" data-toggle="tooltip" title="edit"><i className="fa fa-wrench"></i></button>
-                            <button type="button" className="btn btn-box-tool" data-toggle="tooltip" title="delete"><i className="fa  fa-trash"></i></button>
+                            <button type="button" onClick={this.handleDeleteComment} className="btn btn-box-tool" data-toggle="tooltip" title="delete"><i className="fa  fa-trash"></i></button>
                             <Moment>{comment.timestamp}</Moment>
                         </span>
                     </span>

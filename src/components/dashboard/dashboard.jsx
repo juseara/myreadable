@@ -3,7 +3,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import queryString from 'query-string'
 
-import { fetchPosts, votePostUp, votePostDown, voteCommentUp, voteCommentDown, goToDashboard,sendNewComment } from '../post/postActions'
+import {    fetchPosts, 
+            votePostUp, 
+            votePostDown, 
+            voteCommentUp, 
+            voteCommentDown, 
+            goToDashboard,
+            sendNewComment, 
+            deletePost,
+            deleteComment } from '../post/postActions'
+
 import Content from '../../commons/template/content'
 import PostsList from '../post/postsList'
 import ContentHeader from '../../commons/template/contentHeader'
@@ -59,7 +68,9 @@ class DashBoard extends Component {
                         votePostDown={this.props.votePostDown}
                         voteCommentUp={this.props.voteCommentUp}
                         voteCommentDown={this.props.voteCommentDown}
-                        sendNewComment={this.props.sendNewComment} />
+                        sendNewComment={this.props.sendNewComment}
+                        deletePost={this.props.deletePost}
+                        deleteComment={this.props.deleteComment} />
                 </Content>
             </div>
         )
@@ -67,5 +78,5 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = state => ({ posts: state.post.posts })
-const mapDispatchToProps = dispath => bindActionCreators({ fetchPosts, votePostUp, votePostDown, voteCommentUp, voteCommentDown, goToDashboard, sendNewComment }, dispath)
+const mapDispatchToProps = dispath => bindActionCreators({ fetchPosts, votePostUp, votePostDown, voteCommentUp, voteCommentDown, goToDashboard, sendNewComment, deletePost, deleteComment }, dispath)
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)

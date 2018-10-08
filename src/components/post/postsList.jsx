@@ -31,7 +31,9 @@ class PostsList extends Component {
                         votePostDown={this.props.votePostDown}
                         voteCommentUp={this.props.voteCommentUp}
                         voteCommentDown={this.props.voteCommentDown}
-                        sendNewComment={this.props.sendNewComment} />
+                        sendNewComment={this.props.sendNewComment}
+                        deletePost={this.props.deletePost}
+                        deleteComment={this.props.deleteComment} />
                 }).filter((post) => !post.deleted)}
             </Grid>
 

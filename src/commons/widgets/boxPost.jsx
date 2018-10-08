@@ -9,10 +9,21 @@ import CommentForm from '../../components/post/comment/commentForm'
 
 import imagemDefault from '../img/default_user.png'
 class BoxPost extends Component {
-  
+  constructor(props){
+      super(props)
+
+      this.handleDeletePost = this.handleDeletePost.bind(this)
+  }
+    handleDeletePost(e)
+    {
+        e.preventDefault()
+        const { id } = this.props.post
+        this.props.deletePost(id)
+    }
+
     render() {
         const { post, votePostUp, votePostDown } = this.props
-
+        const comments = post.comments.filter((comment) => !comment.deleted)
         return (
             
             <div className="box box-widget collapsed-box">
@@ -33,7 +44,7 @@ class BoxPost extends Component {
                     <div className="box-tools">
                         <button type="button" className="btn btn-box-tool" data-toggle="tooltip" title="edit">
                             <i className="fa fa-wrench"></i></button>
-                        <button type="button" className="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="delete"><i className="fa  fa-trash"></i></button>
+                        <button type="button" className="btn btn-box-tool" onClick={this.handleDeletePost} data-widget="remove" data-toggle="tooltip" title="delete"><i className="fa  fa-trash"></i></button>
                     </div>
 
                 </div>
@@ -44,11 +55,12 @@ class BoxPost extends Component {
                     <button type="button" onClick={()=>votePostDown(post)} className="btn btn-default btn-xs"><i className="fa fa-thumbs-o-down"></i> Dislike</button>
                     <span className="pull-right text-muted">{`${post.voteScore >= 0? `${post.voteScore} likes`:`${post.voteScore*-1} dislikes`}`}</span>
                 </div>
-                <If test={post.comments.length>0}>
+                <If test={comments.length>0}>
                     <div className="box-footer box-comments">                    
-                        <CommentList    comments={post.comments} 
+                        <CommentList    comments={comments} 
                                         voteCommentUp={this.props.voteCommentUp}
-                                        voteCommentDown={this.props.voteCommentDown}/>
+                                        voteCommentDown={this.props.voteCommentDown}
+                                        deleteComment={this.props.deleteComment}/>
                     </div>
                 </If>
 

@@ -7,9 +7,11 @@ import {    FETCH_POSTS,
             VOTE_UP_COMMENT, 
             VOTE_DOWN_COMMENT, 
             ADD_NEW_POST,
-            GO_TO_DASHBOARD } from '../../utils/types'
+            GO_TO_DASHBOARD,
+            DELETE_POST,
+            DELETE_COMMENT } from '../../utils/types'
 
-import { getPosts, getComments, votePost, voteComment, addPost, addComment } from '../../utils/api'
+import { getPosts, getComments, votePost, voteComment, addPost, addComment, removePost, removeComment } from '../../utils/api'
 
 export function  fetchPosts(){
     return dispatch => {
@@ -109,3 +111,19 @@ export function goToDashboard(value){
         payload:value
     }
 }
+
+export function deletePost(id){
+    removePost(id)
+    return{
+        type: DELETE_POST,
+        payload:id
+    }
+}
+
+export function deleteComment (id, parentId) {
+    removeComment(id)
+    return {
+      type: DELETE_COMMENT,
+      payload:{ id, parentId }
+    }
+  }
