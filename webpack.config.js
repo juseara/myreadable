@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
          
      },
      devServer:{
-         port:8000,
+         port:3000,
          contentBase: './public',
          historyApiFallback: true
      },
