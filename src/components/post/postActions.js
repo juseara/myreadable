@@ -9,9 +9,11 @@ import {    FETCH_POSTS,
             ADD_NEW_POST,
             GO_TO_DASHBOARD,
             DELETE_POST,
-            DELETE_COMMENT } from '../../utils/types'
+            DELETE_COMMENT,
+            EDIT_POST,
+            EDIT_COMMENT } from '../../utils/types'
 
-import { getPosts, getComments, votePost, voteComment, addPost, addComment, removePost, removeComment } from '../../utils/api'
+import { getPosts, getComments, votePost, voteComment, addPost, addComment, removePost, removeComment, updatePost, updateComment } from '../../utils/api'
 
 export function  fetchPosts(){
     return dispatch => {
@@ -73,7 +75,6 @@ export function sendNewPost(values){
    
     
     return dispath =>{
-        console.log("NEW POST == ", values)
         const {title, author, body, category} = values
         let newPost = {
             id: UUID.v4(),
@@ -127,3 +128,19 @@ export function deleteComment (id, parentId) {
       payload:{ id, parentId }
     }
   }
+
+export function editPost(post){
+    updatePost(post)
+    return{
+        type:EDIT_POST,
+        payload:post
+    }
+}
+
+export function editComment(comment){
+        updateComment(comment)
+        return{
+            type:EDIT_COMMENT,
+            payload:comment
+        }
+}

@@ -11,7 +11,9 @@ import {    fetchPosts,
             goToDashboard,
             sendNewComment, 
             deletePost,
-            deleteComment } from '../post/postActions'
+            deleteComment,
+            editPost,
+            editComment } from '../post/postActions'
 
 import Content from '../../commons/template/content'
 import PostsList from '../post/postsList'
@@ -45,7 +47,6 @@ class DashBoard extends Component {
     render() {
         const { posts, location } = this.props
         const values = queryString.parse(location.search)
-        console.log("PARAMETRE == ", values)
         return (
             <div>
                 <ContentHeader title='Home' small='Recent Posts' >
@@ -70,7 +71,9 @@ class DashBoard extends Component {
                         voteCommentDown={this.props.voteCommentDown}
                         sendNewComment={this.props.sendNewComment}
                         deletePost={this.props.deletePost}
-                        deleteComment={this.props.deleteComment} />
+                        deleteComment={this.props.deleteComment}
+                        editPost={this.props.editPost}
+                        editComment={this.props.editComment} />
                 </Content>
             </div>
         )
@@ -78,5 +81,15 @@ class DashBoard extends Component {
 }
 
 const mapStateToProps = state => ({ posts: state.post.posts })
-const mapDispatchToProps = dispath => bindActionCreators({ fetchPosts, votePostUp, votePostDown, voteCommentUp, voteCommentDown, goToDashboard, sendNewComment, deletePost, deleteComment }, dispath)
+const mapDispatchToProps = dispath => bindActionCreators({ fetchPosts, 
+            votePostUp, 
+            votePostDown, 
+            voteCommentUp, 
+            voteCommentDown, 
+            goToDashboard, 
+            sendNewComment, 
+            deletePost, 
+            deleteComment,
+            editPost,
+            editComment }, dispath)
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)

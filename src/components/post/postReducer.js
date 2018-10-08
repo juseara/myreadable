@@ -1,4 +1,4 @@
-const INITIAL_STATE = { posts:[], goToDashboard: false, categories: [] }
+const INITIAL_STATE = { posts:[], goToDashboard: false, categories: [], newPost:null }
 
 import {    FETCH_POSTS, 
             VOTE_UP_POST, 
@@ -7,7 +7,9 @@ import {    FETCH_POSTS,
             VOTE_DOWN_COMMENT, 
             GO_TO_DASHBOARD, 
             DELETE_POST,
-            DELETE_COMMENT } from '../../utils/types'
+            DELETE_COMMENT, 
+            EDIT_POST,
+            EDIT_COMMENT} from '../../utils/types'
 
 export default function(state = INITIAL_STATE, action){
     switch(action.type){
@@ -101,8 +103,25 @@ export default function(state = INITIAL_STATE, action){
                         }
                         return comment
                     })
-                    
+                    post.commentCount--
                     return {...post,comments:newComments}
+                }
+                return post
+            })
+            return {...state,posts:newPosts}
+        }
+        case EDIT_POST: {
+            const newPosts = state.posts.filter(post => post.id !== action.payload.id).concat(action.payload)
+            return {...state,posts:newPosts}
+        }
+        case EDIT_COMMENT:{
+            const newPosts = state.posts.map(post=>{
+                if(post.id === action.payload.parentId)
+                {
+                    
+                    post.comments = post.comments.filter(comment=> comment.id !== action.payload.id).concat(action.payload)
+                    
+                    return post
                 }
                 return post
             })

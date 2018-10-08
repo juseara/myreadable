@@ -10,5 +10,7 @@ export const GO_TO_DASHBOARD        = 'GO_TO_DASHBOARD'
 export const CHANGE_ORDER_POST      = 'CHANGE_ORDER_POST'
 export const DELETE_POST            = 'DELETE_POST'
 export const DELETE_COMMENT         = 'DELETE_COMMENT'
+export const EDIT_POST              = 'EDIT_POST'
+export const EDIT_COMMENT           = 'EDIT_COMMENT'
 
 

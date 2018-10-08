@@ -1,9 +1,6 @@
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require('path')
 
-console.log("DIRNAME", __dirname)
  module.exports = {
      entry:'./src/index.jsx',
      output:{

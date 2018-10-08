@@ -7,8 +7,7 @@ import BoxComment from '../../../commons/widgets/boxComment'
 class CommentList extends Component {
 
     render(){
-        console.log("PROPS DASHBOARDLIST == ", this.props)
-        const  comments  = _.orderBy(this.props.comments,['timestamp'],['desc']) || []        
+        const  comments  = _.orderBy(this.props.comments,['timestamp'],['asc']) || []        
         return (
             <div>
                 {comments.map(comment =><BoxComment     key={comment.id}
@@ -16,6 +15,7 @@ class CommentList extends Component {
                                                         voteCommentUp={this.props.voteCommentUp}
                                                         voteCommentDown={this.props.voteCommentDown}
                                                         deleteComment={this.props.deleteComment}
+                                                        editComment={this.props.editComment}
                                                         />)}
             </div>
             
