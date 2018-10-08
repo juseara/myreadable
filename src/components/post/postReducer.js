@@ -1,6 +1,6 @@
-const INITIAL_STATE = { posts:[] }
+const INITIAL_STATE = { posts:[], goToDashboard: false, categories: [] }
 
-import { FETCH_POSTS, VOTE_UP_POST, VOTE_DOWN_POST, VOTE_UP_COMMENT,VOTE_DOWN_COMMENT } from '../../utils/types'
+import { FETCH_POSTS, VOTE_UP_POST, VOTE_DOWN_POST, VOTE_UP_COMMENT, VOTE_DOWN_COMMENT, GO_TO_DASHBOARD } from '../../utils/types'
 
 export default function(state = INITIAL_STATE, action){
     switch(action.type){
@@ -68,6 +68,8 @@ export default function(state = INITIAL_STATE, action){
             })
             return {...state,posts:newPosts}
         }
+        case GO_TO_DASHBOARD:
+            return {...state,goToDashboard:action.payload}
         default:
             return state
     }

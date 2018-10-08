@@ -8,3 +8,18 @@
     width: 35%;
     min-width: 150px;
  }
+
+ .input-order-post{   
+    border-radius: 18px;
+ }
+
+ .group-post{
+    width: 14%;
+    min-width: 150px;
+    float: right;
+    margin-bottom: 10px;
+ }
+
+ .input-group-post{
+    border-radius: 18px 0 0 18px !important;
+ }

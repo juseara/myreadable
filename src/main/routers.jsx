@@ -7,7 +7,7 @@ import Post from '../components/post/post'
 export default props => (
     <Switch>
         <Route exact path='/'  component={DashBoard} />
-        <Route path='/post'  component={Post} />
+        <Route exact path='/post'  component={Post} />
         <Redirect from='*'  to="/" />
     </Switch>
 )

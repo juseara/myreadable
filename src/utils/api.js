@@ -32,7 +32,7 @@ export const  getComments = (id) =>
     res.json()
   )
 
-export const addPost = (post) => {
+export const addPost = (post) => 
   fetch(`${api}/posts`, {
     method: 'POST',
     headers,
@@ -40,7 +40,7 @@ export const addPost = (post) => {
   }).then(res => {
     res.json()
   })
-}
+
 
 export const updatePost = (post) => {
   const { title, body } = post
@@ -86,7 +86,7 @@ export const removePost = (id) => {
 export const addComment = (comment) => {
   const {id, timestamp, body, author, parentId} = comment
 
-  fetch(`${api}/comments/`, {
+  return fetch(`${api}/comments/`, {
     method: 'POST',
     headers,
     body: JSON.stringify({id, timestamp, body, author, parentId})

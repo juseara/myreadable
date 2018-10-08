@@ -12,9 +12,16 @@ import { Provider } from 'react-redux'
 import App from './main/app'
 import reducers from './main/reducers'
 
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
-        && window.__REDUX_DEVTOOLS_EXTENSION__()
-const store = applyMiddleware(promise, thunk, promise)(createStore)(reducers,devTools)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const store = createStore(
+    reducers,
+    composeEnhancers(
+      applyMiddleware(multi, thunk, promise)
+    )
+  )
+
+
 ReactDOM.render(
     <Provider store={store} >
         <BrowserRouter><App /></BrowserRouter>

@@ -4,15 +4,15 @@ import Moment from 'react-moment';
 Moment.globalFormat = 'D MMM YYYY';
 
 import If from '../operator/if'
-import CommentList from '../../components/post/commentList'
+import CommentList from '../../components/post/comment/commentList'
+import CommentForm from '../../components/post/comment/commentForm'
 
 import imagemDefault from '../img/default_user.png'
 class BoxPost extends Component {
   
     render() {
         const { post, votePostUp, votePostDown } = this.props
-        
-        console.log("POTS == ", post)
+
         return (
             
             <div className="box box-widget collapsed-box">
@@ -52,18 +52,7 @@ class BoxPost extends Component {
                     </div>
                 </If>
 
-                <div className="box-footer">
-                    <form>
-                        <img className="img-responsive img-circle img-sm" src={imagemDefault} alt="Alt Text" />
-                        
-                        <div className="img-push">
-                            <input type="text" className="form-control input-sm input-comment input-author-comment" placeholder="Author name" />
-                        </div>
-                        <div className="img-push">
-                            <input type="text" className="form-control input-sm input-comment" placeholder="Press enter to post comment" />
-                        </div>
-                    </form>
-                </div>
+                <CommentForm parentId={post.id} sendNewComment={this.props.sendNewComment}/>
 
             </div>
         )

@@ -1,8 +1,13 @@
 import { combineReducers } from 'redux'
-import dashboard from '../components/dashboard/dashboardReducer'
+import { reducer as formReducer } from 'redux-form'
+
+import post from '../components/post/postReducer'
+import category from '../components/category/categoryReducer'
 
 const rootReducer = combineReducers({
-    dashboard
+    post,
+    category,
+    form:formReducer
 })
 
 export default rootReducer

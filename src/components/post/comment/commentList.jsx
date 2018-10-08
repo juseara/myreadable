@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import * as _ from 'lodash'
 
-import BoxComment from '../../commons/widgets/boxComment'
+import BoxComment from '../../../commons/widgets/boxComment'
 
 
 class CommentList extends Component {
 
     render(){
         console.log("PROPS DASHBOARDLIST == ", this.props)
-        const  comments  = this.props.comments || []
+        const  comments  = _.orderBy(this.props.comments,['timestamp'],['desc']) || []
         return (
             <div>
                 {comments.map(comment =><BoxComment     key={comment.id}

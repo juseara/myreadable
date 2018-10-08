@@ -7,21 +7,10 @@ import Routes from '../main/routers'
 import { getCategories } from '../utils/api'
 
 class App extends Component {
-    constructor(props){
-        super(props)
-        this.state = {categories : []}
-    }
-    componentDidMount(){
-        getCategories().then((categories) => {
-            console.log(categories)
-            this.setState({categories:categories})
-          })
-    }
-
     render() {
         return (
             <div className='wrapper'>
-                <Header categories={this.state.categories} />
+                <Header  />
                 <div className='content-wrapper'>
                     <div className="container">
                         <Routes />
