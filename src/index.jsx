@@ -12,14 +12,15 @@ import { Provider } from 'react-redux'
 import App from './main/app'
 import reducers from './main/reducers'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+const store = applyMiddleware(multi,thunk,promise)(createStore)(reducers,devTools)
+/* 
 const store = createStore(
     reducers,
     composeEnhancers(
       applyMiddleware(multi, thunk, promise)
     )
-  )
+  ) */
 
 
 ReactDOM.render(
