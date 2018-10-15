@@ -11,7 +11,7 @@ class DropDown extends Component {
                     className="dropdown-toggle"
                     data-toggle="dropdown">Categories<span className="caret"></span></a>
                 <ul className="dropdown-menu" role="menu">
-                    {categories.map(category => <li key={category.name}><Link to={`/?category=${category.path}`}>{category.name}</Link></li>)}
+                    {categories.map(category => <li key={category.name}><Link to={`/${category.path}`}>{category.name}</Link></li>)}
                 </ul>
             </li>
         )

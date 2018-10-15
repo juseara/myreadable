@@ -9,7 +9,7 @@ import { fetchCategories } from '../../components/category/categoryAction'
 
 class Header extends Component {
 
-    componentDidMount(){
+    componentWillMount(){
         this.props.fetchCategories();
     }
 

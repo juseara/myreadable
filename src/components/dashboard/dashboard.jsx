@@ -45,8 +45,9 @@ class DashBoard extends Component {
         )
     }
     render() {
-        const { posts, location } = this.props
-        const values = queryString.parse(location.search)
+        const { posts, location, match } = this.props
+        console.log("MATCH", match.params)
+        const values = match.params
         return (
             <div>
                 <ContentHeader title='Home' small='Recent Posts' >
@@ -64,7 +65,7 @@ class DashBoard extends Component {
                     </div>
                     <PostsList posts={posts}
                         order={this.state.order}
-                        filter={location.search}
+                        filter={values.category}
                         votePostUp={this.props.votePostUp}
                         votePostDown={this.props.votePostDown}
                         voteCommentUp={this.props.voteCommentUp}

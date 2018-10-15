@@ -11,12 +11,11 @@ class PostsList extends Component {
 
     render() {
         const { filter } = this.props
-
+        console.log("FILTER", filter)
         let posts = _.orderBy(this.props.posts, [this.props.order], ['desc'])
 
         if (filter) {
-            const values = queryString.parse(filter)
-            posts = posts.filter(post => post.category === values.category)
+            posts = posts.filter(post => post.category === filter)
         }
 
 

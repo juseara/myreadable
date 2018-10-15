@@ -1,16 +1,16 @@
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const path = require('path');
  module.exports = {
      entry:'./src/index.jsx',
      output:{
-         path: __dirname + '/public',
+         path: path.join(__dirname, 'public'),
          filename: './app.js',
          
      },
      devServer:{
          port:3000,
-         contentBase: './public',
+         contentBase: path.join(__dirname, 'public'),
          historyApiFallback: true
      },
      resolve:{

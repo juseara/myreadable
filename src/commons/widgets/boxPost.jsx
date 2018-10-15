@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 import Moment from 'react-moment';
 Moment.globalFormat = 'D MMM YYYY';
 
@@ -8,7 +8,7 @@ import CommentList from '../../components/post/comment/commentList'
 import CommentForm from '../../components/post/comment/commentForm'
 
 import imagemDefault from '../img/default_user.png'
-import { timingSafeEqual } from 'crypto';
+
 class BoxPost extends Component {
     constructor(props) {
         super(props)
@@ -70,7 +70,7 @@ class BoxPost extends Component {
                         <If test={this.state.modeRead}>
                             <img className="img-circle" src={imagemDefault} alt="User Image" />
                             <span className="username">
-                                <a href="#">{post.author} - {post.title}</a>
+                                <Link to={`/${post.category}/${post.id}`}>{post.author} - {post.title}</Link>
                             </span>
                             <span className="description"></span>
                             <ul className="list-inline">
