@@ -1,7 +1,8 @@
 import React from 'react'
 
 export default props =>(
-    <div>
-        <h1>Page not fould !!</h1>
-    </div>
+    <div className="text-center">
+    <h1>404!</h1>
+    <a href="/"><h4>Go to home page</h4></a>
+  </div>
 )

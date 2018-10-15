@@ -9,6 +9,10 @@ você deve seguir os passos listado abaixa para instalar todas as dependências 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
+## Dependencia
+
+Essa aplicação tem depêndencia dessa [api](https://github.com/udacity/reactnd-project-readable-starter) para manter os posts, server roda em `localhost:3001`.
+
 ## Funcionalidade da aplicação
 
 Nesta aplicação, temos 2 views que são:

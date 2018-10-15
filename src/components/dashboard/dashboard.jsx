@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import queryString from 'query-string'
+
 
 import {    fetchPosts, 
             votePostUp, 
@@ -45,7 +45,7 @@ class DashBoard extends Component {
         )
     }
     render() {
-        const { posts, location, match } = this.props
+        const { posts, match } = this.props
         console.log("MATCH", match.params)
         const values = match.params
         return (
