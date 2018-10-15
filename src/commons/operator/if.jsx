@@ -1,11 +1,5 @@
-import React from 'react'
-
-export default props => {
-    if(props.test)
-    {
-        return props.children
-    }
-    else{
-        return false
-    }
+const If = ({test,children}) =>{
+    return test? children:false
 }
+
+export default If

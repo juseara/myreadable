@@ -1,45 +1,36 @@
 import React, { Component } from 'react'
-
 import * as _ from 'lodash'
-import queryString from 'query-string'
 
 import BoxPost from '../../commons/widgets/boxPost'
 import Grid from '../../commons/layout/grid'
 
+const PostsList = ({filter, posts, votePostUp, voteCommentUp, votePostDown,
+    voteCommentDown, sendNewComment, deletePost, deleteComment, editPost,
+    editComment,order }) =>{
 
-class PostsList extends Component {
+    posts = _.orderBy(posts, [order], ['desc'])
 
-    render() {
-        const { filter } = this.props
-        console.log("FILTER", filter)
-        let posts = _.orderBy(this.props.posts, [this.props.order], ['desc'])
-
-        if (filter) {
-            posts = posts.filter(post => post.category === filter)
-        }
-
-
-        return (
-            
-            <Grid>
-                
-                {posts.map(post => {
-                    return <BoxPost key={post.id}
-                        post={post}
-                        votePostUp={this.props.votePostUp}
-                        votePostDown={this.props.votePostDown}
-                        voteCommentUp={this.props.voteCommentUp}
-                        voteCommentDown={this.props.voteCommentDown}
-                        sendNewComment={this.props.sendNewComment}
-                        deletePost={this.props.deletePost}
-                        deleteComment={this.props.deleteComment} 
-                        editPost={this.props.editPost}
-                        editComment={this.props.editComment} />
-                }).filter((post) => !post.deleted)}
-            </Grid>
-
-        )
+    if (filter) {
+        posts = posts.filter(post => post.category === filter)
     }
+
+    return (
+        <Grid>
+            {posts.map(post => {
+                return <BoxPost key={post.id}
+                    post={post}
+                    votePostUp={votePostUp}
+                    votePostDown={votePostDown}
+                    voteCommentUp={voteCommentUp}
+                    voteCommentDown={voteCommentDown}
+                    sendNewComment={sendNewComment}
+                    deletePost={deletePost}
+                    deleteComment={deleteComment} 
+                    editPost={editPost}
+                    editComment={editComment} />
+            }).filter((post) => !post.deleted)}
+        </Grid>
+    )
 }
 
 export default PostsList

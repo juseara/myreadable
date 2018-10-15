@@ -23,19 +23,12 @@ import NoMatch from '../../commons/template/noMatch'
 
 class PostDetail extends Component{
 
-    constructor(props){
-        super(props)
-
-        this.state = {post:{}}
-    }
     componentWillMount(){
         this.props.fetchPosts()
-        
     }
     render(){
         const post = this.props.posts.find(post => post.id === this.props.match.params.id)
-       
-        console.log("POST",post)
+
         return(
             <Grid>
                    <ContentHeader title='Post' small='detail' />
